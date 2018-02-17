@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import ContactDetail from '../components/ContactDetail';
 
 import {
-  actionSelectContact
+  actionRemoveContact  
 } from '../actions/contacts';
 
 const mapStateToProps = (state) => {
@@ -11,14 +11,23 @@ const mapStateToProps = (state) => {
     id: 54321,
     twitter: '@test'
   };
+
+  console.log(contact);
   
   return {
     contact
   };
 };
 
+const mapDispatchToProps = (dispatch) => ({
+  remove: (id) => {
+    dispatch(actionRemoveContact(id));
+  }
+});
+
 const ContactDetailContainer = connect(
-  mapStateToProps
+  mapStateToProps,
+  mapDispatchToProps
 )(ContactDetail);
 
 export default ContactDetailContainer;

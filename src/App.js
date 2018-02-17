@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-
 import contacts from './reducers/contacts';
-import ContactListContainer from './containers/ContactListContainer';
 
+import ContactListContainer from './containers/ContactListContainer';
 import ContactDetailContainer from './containers/ContactDetailContainer';
 
-import {
-  BrowserRouter as Router
-} from 'react-router-dom';
+
+// import {
+  // BrowserRouter as Router
+// } from 'react-router-dom';
 
 
 import './App.css';

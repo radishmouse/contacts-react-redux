@@ -24,10 +24,9 @@ export const actionEditContact = (name, id) => ({
   }
 });
 
-export const actionRemoveContact = (name, id) => ({
+export const actionRemoveContact = (id) => ({
   type: REMOVE_CONTACT,
   payload: {
-    name,
     id
   }
 });

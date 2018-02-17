@@ -29,7 +29,7 @@ const initialState = [
 ];
 
 
-const select = (state=null, action) => {
+const select = (state=initialState[0].id, action) => {
 
   switch (action.type) {
   case SELECT_CONTACT:
@@ -44,17 +44,17 @@ const contacts = (state=initialState, action) => {
   switch (action.type) {
   case ADD_CONTACT:
     return [
-      ...state.contacts,
+      ...state,
       action.payload
     ];
 
   case EDIT_CONTACT:
-    return state.contacts.map(c => (
+    return state.map(c => (
       c.id === action.payload.id ? action.payload : c
     ));
 
   case REMOVE_CONTACT:
-    return state.contacts.filter(c => c.id !== action.payload.id);
+    return state.filter(c => c.id !== action.payload.id);
 
   default:
     return state;

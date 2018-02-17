@@ -1,18 +1,24 @@
 import React from 'react';
 
-const ContactDetail = ({contact}) => {
+import ContactDetailDisplay from './ContactDetailDisplay';
+import ContactDetailControls from './ContactDetailControls';
 
-  const listItems = Object.keys(contact).map((k, i) => {
-    return k !== 'name' ? (<li key={i}>{k}: {contact[k]}</li>) : null;
-  });
-  
-  return (
+const ContactDetail = ({
+  contact,
+  remove
+}) => {
+
+  const detail = contact ? (
     <div>
-      <h1>{contact.name}</h1>
-      <ul>
-        {listItems}
-      </ul>
+      <ContactDetailDisplay contact={contact} />
+      <ContactDetailControls id={contact.id} remove={remove} />
     </div>
+  ) : null;
+
+  return (
+    <React.Fragment>
+      {detail}
+    </React.Fragment>
   );
 };
 
