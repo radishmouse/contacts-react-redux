@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 
-import {
-  createStore,
-  // combineReducers
-} from 'redux';
+import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
 import contacts from './reducers/contacts';
