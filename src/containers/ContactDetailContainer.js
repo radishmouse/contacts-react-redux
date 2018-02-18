@@ -4,7 +4,9 @@ import ContactDetail from '../components/ContactDetail';
 import {
   actionRemoveContact,
   actionSetEditing,
-  actionStageChanges
+  actionEditContact,
+  actionStageChanges,
+  actionResetChanges
 } from '../actions/contacts';
 
 const mapStateToProps = (state) => {
@@ -38,6 +40,14 @@ const mapDispatchToProps = (dispatch) => ({
   },
   changeHandler: (data) => {
     dispatch(actionStageChanges(data));
+  },
+  save: (data) => {
+    // console.log('we will save this:');
+    // console.log(data);
+    // if this works, we can dispatch to actionEditContact with data as the payload
+    dispatch(actionEditContact(data));
+    dispatch(actionSetEditing(false));
+    dispatch(actionResetChanges());    
   }
 });
 

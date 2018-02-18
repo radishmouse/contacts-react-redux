@@ -4,11 +4,13 @@ const ContactDetailControls = ({
   isEditing,
   edit,
   remove,
-  id
+  save,
+  id,
+  contact
 }) => {
 
   const editButton = isEditing ? <button onClick={() => edit(false)}>Cancel</button> : <button onClick={() => edit(id)}>Edit</button>;
-  const saveButton = isEditing ? <button onClick={() => console.log('looks like you want to save, bro')}>Save</button> : null;
+  const saveButton = isEditing ? <button onClick={() => save(contact)}>Save</button> : null;
   const deleteButton = isEditing ? null : <button onClick={() => remove(id)}>Remove</button>;
   return (
     <div>

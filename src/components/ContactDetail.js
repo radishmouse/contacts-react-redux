@@ -8,6 +8,7 @@ const ContactDetail = ({
   contact,
   remove,
   edit,
+  save,
   isEditing,
   changeHandler
 }) => {
@@ -15,7 +16,7 @@ const ContactDetail = ({
   const detail = contact ? (
     <div>
       {controls}
-      <ContactDetailControls id={contact.id} remove={remove} edit={edit} isEditing={isEditing}/>
+      <ContactDetailControls id={contact.id} remove={remove} edit={edit} save={save} contact={contact} isEditing={isEditing}/>
     </div>
   ) : null;
 

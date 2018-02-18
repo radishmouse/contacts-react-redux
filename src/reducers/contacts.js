@@ -6,7 +6,8 @@ import {
   REMOVE_CONTACT,
   SELECT_CONTACT,
   SET_EDITING,
-  STAGE_CHANGES
+  STAGE_CHANGES,
+  RESET_CHANGES
 } from '../actions/contacts';
 
 const initialState = [
@@ -56,6 +57,8 @@ the `contacts` reducer.
       ...state,
       ...action.payload
     };
+  case RESET_CHANGES:
+    return {};
   default:
     return state;
   }
