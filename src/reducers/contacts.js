@@ -4,7 +4,9 @@ import {
   ADD_CONTACT,
   EDIT_CONTACT,
   REMOVE_CONTACT,
-  SELECT_CONTACT
+  SELECT_CONTACT,
+  SET_EDITING,
+  STAGE_CHANGES
 } from '../actions/contacts';
 
 const initialState = [
@@ -28,6 +30,36 @@ const initialState = [
   }  
 ];
 
+
+const editing = (state=false, action) => {
+  switch (action.type) {
+  case SET_EDITING:
+    return action.payload;
+  default:
+    return state;
+  }
+};
+
+
+// I need for the default state to be whatever contact is selected...
+const staging = (state={}, action) => {
+/*
+As changes are made to a contact while being edited,
+they are buffered in state here.
+When changes are committed, they are dispatched to
+the `contacts` reducer.
+*/
+  
+  switch (action.type) {
+  case STAGE_CHANGES:
+    return {
+      ...state,
+      ...action.payload
+    };
+  default:
+    return state;
+  }
+};
 
 const select = (state=initialState[0].id, action) => {
 
@@ -63,5 +95,7 @@ const contacts = (state=initialState, action) => {
 
 export default combineReducers({
   contacts,
-  select
+  select,
+  isEditing: editing,
+  staging
 });
