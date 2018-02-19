@@ -12,8 +12,8 @@ const ContactDetailEditor = ({
   const fields = fieldNames
         .filter(k => !(/id/.test(k)))
         .map((k, i) => (
-          <div className="fieldset">
-            <label key={i}> {k}: </label>
+          <div key={i} className="fieldset">
+            <label> {k}: </label>
             <input onChange={sendValueToHandler} name={k} value={contact[k]}/>
           </div>
         ));
