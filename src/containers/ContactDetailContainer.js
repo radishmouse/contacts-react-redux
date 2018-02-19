@@ -35,6 +35,13 @@ const mapDispatchToProps = (dispatch) => ({
   edit: (id) => {
     dispatch(actionSetEditing(id));
   },
+  cancel: () => {
+    // currently unused.
+    // it's nice to be able to edit again if you cancel by accident
+    // and all the previous input still be there.
+    dispatch(actionSetEditing(false));
+    dispatch(actionResetChanges());        
+  },
   changeHandler: (data) => {
     dispatch(actionStageChanges(data));
   },

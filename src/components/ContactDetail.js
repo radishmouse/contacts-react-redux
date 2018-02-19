@@ -7,6 +7,7 @@ import ContactDetailControls from './ContactDetailControls';
 const ContactDetail = ({
   contact,
   remove,
+  cancel,
   edit,
   save,
   isEditing,
@@ -16,7 +17,7 @@ const ContactDetail = ({
   const detail = contact ? (
     <div>
       {controls}
-      <ContactDetailControls id={contact.id} remove={remove} edit={edit} save={save} contact={contact} isEditing={isEditing}/>
+      <ContactDetailControls id={contact.id} remove={remove} edit={edit} save={save} contact={contact} isEditing={isEditing} cancel={cancel} />
     </div>
   ) : null;
 
