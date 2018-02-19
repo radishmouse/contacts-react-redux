@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-
-import {
+import { blankContact } from '../schema';
+import { 
   ADD_CONTACT,
   EDIT_CONTACT,
   REMOVE_CONTACT,
@@ -12,18 +12,21 @@ import {
 
 const initialState = [
   {
+    ...blankContact,
     id: 111,
     name: 'bob',
     number: '404-404-1234',
     twitter: '@bobloblaw'
   },
   {
+    ...blankContact,    
     id: 112,
     name: 'alice',
     number: '404-404-1234',
     twitter: '@inwunderland'
   },
   {
+    ...blankContact,    
     id: 113,
     name: 'carl',
     number: '404-404-1234',
@@ -50,7 +53,7 @@ they are buffered in state here.
 When changes are committed, they are dispatched to
 the `contacts` reducer.
 */
-  
+  console.log(state);
   switch (action.type) {
   case STAGE_CHANGES:
     return {

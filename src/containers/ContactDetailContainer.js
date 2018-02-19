@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import ContactDetail from '../components/ContactDetail';
+import { blankContact } from '../schema';
 
 import {
   actionRemoveContact,
@@ -10,11 +11,7 @@ import {
 } from '../actions/contacts';
 
 const mapStateToProps = (state) => {
-  let contact = state.select ? state.contacts.find((c => c.id === state.select)) : {
-    name: 'test',
-    id: 54321,
-    twitter: '@test'
-  };
+  let contact = state.select ? state.contacts.find((c => c.id === state.select)) : blankContact;
 
   // If there's something in the "staging" area and we are in editing mode,
   // we'll send that instead of what's saved in state.contacts
