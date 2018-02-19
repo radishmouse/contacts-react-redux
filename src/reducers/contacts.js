@@ -47,12 +47,12 @@ const editing = (state=false, action) => {
 
 // I need for the default state to be whatever contact is selected...
 const staging = (state={}, action) => {
-/*
-As changes are made to a contact while being edited,
-they are buffered in state here.
-When changes are committed, they are dispatched to
-the `contacts` reducer.
-*/
+  /*
+    As changes are made to a contact while being edited,
+    they are buffered in state here.
+    When changes are committed, they are dispatched to
+    the `contacts` reducer.
+  */
   console.log(state);
   switch (action.type) {
   case STAGE_CHANGES:
