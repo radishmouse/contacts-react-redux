@@ -1,4 +1,5 @@
 import React from 'react';
+import { fields as fieldNames } from '../schema';
 
 const extractNameAndValueFromEvent = (e) => ({[e.target.name]: e.target.value});
 
@@ -8,13 +9,18 @@ const ContactDetailEditor = ({
 }) => {
   const sendValueToHandler = e => changeHandler(extractNameAndValueFromEvent(e));
   
-  const fields = Object.keys(contact)
-        .filter(k => !(/name|id/.test(k)))
-        .map((k, i) => (<input key={i} onChange={sendValueToHandler} name={k} value={contact[k]}/>));
+  const fields = fieldNames
+        .filter(k => !(/id/.test(k)))
+        .map((k, i) => (
+          <div className="fieldset">
+            <label key={i}> {k}: </label>
+            <input onChange={sendValueToHandler} name={k} value={contact[k]}/>
+          </div>
+        ));
   
   return (
     <div>
-      <h1>{contact.name}</h1>
+      <h1>Edit Contact</h1>
       {fields}
     </div>
   );

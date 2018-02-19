@@ -1,8 +1,9 @@
 import React from 'react';
+import { fields as fieldNames } from '../schema';
 
 const ContactDetail = ({contact}) => {
 
-  const listItems = Object.keys(contact).map((k, i) => {
+  const listItems = fieldNames.map((k, i) => {
     return k !== 'name' ? (<li key={i}>{k}: {contact[k]}</li>) : null;
   });
   

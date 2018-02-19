@@ -13,7 +13,7 @@ const ContactDetailControls = ({
   const saveButton = isEditing ? <button onClick={() => save(contact)}>Save</button> : null;
   const deleteButton = isEditing ? null : <button onClick={() => remove(id)}>Remove</button>;
   return (
-    <div>
+    <div className="detail-controls">
       {saveButton}
       {editButton}
       {deleteButton}      
