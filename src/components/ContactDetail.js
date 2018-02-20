@@ -16,10 +16,13 @@ const ContactDetail = ({
   cancelNew,
   changeHandler
 }) => {
-  const controls = isEditing ? <ContactDetailEditor contact={contact} changeHandler={changeHandler} /> : <ContactDetailDisplay contact={contact} />;
-  const detail = contact ? (
-    <div>
-      {controls}
+  const contactInfo = isEditing ? <ContactDetailEditor contact={contact} changeHandler={changeHandler} isCreating={isCreating}/> : <ContactDetailDisplay contact={contact} />;
+
+  // Show the rest of the panel if we got passed a contact *and*
+  // the contact has an ID *or* we are trying to create a contact
+  const detail = contact && (contact.id || isCreating) ? (
+    <React.Fragment>
+      {contactInfo}
       <ContactDetailControls
         id={contact.id}
         remove={remove}
@@ -32,7 +35,7 @@ const ContactDetail = ({
         cancel={cancel}
         cancelNew={cancelNew}
         />
-    </div>
+    </React.Fragment>
   ) : null;
 
   return (

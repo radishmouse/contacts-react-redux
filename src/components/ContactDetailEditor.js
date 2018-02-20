@@ -5,7 +5,8 @@ const extractNameAndValueFromEvent = (e) => ({[e.target.name]: e.target.value});
 
 const ContactDetailEditor = ({
   contact,
-  changeHandler
+  changeHandler,
+  isCreating
 }) => {
   const sendValueToHandler = e => changeHandler(extractNameAndValueFromEvent(e));
   
@@ -17,10 +18,11 @@ const ContactDetailEditor = ({
             <input onChange={sendValueToHandler} name={k} value={contact[k]}/>
           </div>
         ));
+  const label = isCreating ? 'Add New' : 'Edit';
   
   return (
     <div>
-      <h1>Edit Contact</h1>
+      <h1>{label} Contact</h1>
       {fields}
     </div>
   );
