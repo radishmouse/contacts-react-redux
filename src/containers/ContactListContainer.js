@@ -5,7 +5,8 @@ import {
   // actionAddContact,
   // actionEditContact,
   // actionRemoveContact
-  actionSetEditing,  
+  actionSetEditing,
+  actionSetCreating,
   actionSelectContact,
   actionResetChanges  
 } from '../actions/contacts';
@@ -22,6 +23,11 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(actionSelectContact(id));
     dispatch(actionSetEditing(false));    
     dispatch(actionResetChanges());        
+  },
+  create: () => {
+    dispatch(actionSelectContact(0));    
+    dispatch(actionSetCreating(true));
+    dispatch(actionSetEditing(true));        
   }
   // add: payload => dispatch(actionAddContact()),
   // edit: (...args) => dispatch(actionEditContact(...args)),

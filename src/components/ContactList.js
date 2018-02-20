@@ -1,20 +1,28 @@
 import React from 'react';
 import ContactListItem from './ContactListItem';
 
-const ContactList = (props) => {
-  const listItems = props.contacts.map( (c, i) => (
+const ContactList = ({
+  contacts,
+  select,
+  create
+}) => {
+  const listItems = contacts.map( (c, i) => (
     <ContactListItem
       key={c.id}
       name={c.name}
       id={c.id}
-      select={props.select}
+      select={select}
       />
   ));
 
   return (
-    <ul>
-      {listItems}
-    </ul>
+    <React.Fragment>
+      <ul>
+        {listItems}
+      </ul>
+      <button onClick={create}>Add New</button>
+    </React.Fragment>
+
   );
 };
 

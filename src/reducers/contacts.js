@@ -6,6 +6,7 @@ import {
   REMOVE_CONTACT,
   SELECT_CONTACT,
   SET_EDITING,
+  SET_CREATING,
   STAGE_CHANGES,
   RESET_CHANGES
 } from '../actions/contacts';
@@ -38,6 +39,15 @@ const initialState = [
 const editing = (state=false, action) => {
   switch (action.type) {
   case SET_EDITING:
+    return action.payload;
+  default:
+    return state;
+  }
+};
+
+const creating = (state=false, action) => {
+  switch (action.type) {
+  case SET_CREATING:
     return action.payload;
   default:
     return state;
@@ -103,5 +113,6 @@ export default combineReducers({
   contacts,
   select,
   isEditing: editing,
+  isCreating: creating,
   staging
 });

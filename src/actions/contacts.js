@@ -3,6 +3,7 @@ export const EDIT_CONTACT = 'EDIT_CONTACT';
 export const REMOVE_CONTACT = 'REMOVE_CONTACT';
 export const SELECT_CONTACT = 'SELECT_CONTACT';
 export const SET_EDITING = 'SET_EDITING';
+export const SET_CREATING = 'SET_CREATING';
 export const STAGE_CHANGES = 'STAGE_CHANGES';
 export const RESET_CHANGES = 'RESET_CHANGES';
 
@@ -11,10 +12,10 @@ function uuidv4() {
     (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16));
 }
 
-export const actionAddContact = (name) => ({
+export const actionAddContact = (data) => ({
   type: ADD_CONTACT,
   payload: {
-    name,
+    ...data,
     id: uuidv4()
   }
 });
@@ -43,6 +44,11 @@ export const actionSetEditing = (isEditing) => ({
   payload: isEditing
 });
 
+export const actionSetCreating = (isCreating) => ({
+  type: SET_CREATING,
+  payload: isCreating
+});
+
 export const actionStageChanges = (data) => ({
   type: STAGE_CHANGES,
   payload: data
@@ -50,4 +56,4 @@ export const actionStageChanges = (data) => ({
 
 export const actionResetChanges = () => ({
   type: RESET_CHANGES
-})
+});

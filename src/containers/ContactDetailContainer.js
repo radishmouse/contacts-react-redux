@@ -5,6 +5,8 @@ import { blankContact } from '../schema';
 import {
   actionRemoveContact,
   actionSetEditing,
+  actionSetCreating,
+  actionAddContact,
   actionEditContact,
   actionStageChanges,
   actionResetChanges
@@ -24,7 +26,8 @@ const mapStateToProps = (state) => {
   
   return {
     contact,
-    isEditing: state.isEditing
+    isEditing: state.isEditing,
+    isCreating: state.isCreating
   };
 };
 
@@ -39,8 +42,11 @@ const mapDispatchToProps = (dispatch) => ({
     // currently unused.
     // it's nice to be able to edit again if you cancel by accident
     // and all the previous input still be there.
+  },
+  cancelNew: () => {
     dispatch(actionSetEditing(false));
-    dispatch(actionResetChanges());        
+    dispatch(actionSetCreating(false));    
+    dispatch(actionResetChanges());            
   },
   changeHandler: (data) => {
     dispatch(actionStageChanges(data));
@@ -52,6 +58,12 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(actionEditContact(data));
     dispatch(actionSetEditing(false));
     dispatch(actionResetChanges());    
+  },
+  saveNew: (data) => {
+    dispatch(actionAddContact(data));
+    dispatch(actionSetEditing(false));
+    dispatch(actionSetCreating(false));        
+    dispatch(actionResetChanges());        
   }
 });
 
