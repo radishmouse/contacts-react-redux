@@ -12,21 +12,13 @@ const ContactDetailControls = ({
   contact
 }) => {
 
-  const editButton = isEditing ? <button onClick={() => {
-    if (isCreating) {
-      cancelNew();
-    } else {
-      edit(false);
-    }
-  }}>Cancel</button> : <button onClick={() => edit(id)}>Edit</button>;
-  const saveButton = isEditing ? <button onClick={() => {
-    if (isCreating) {
-      saveNew(contact);
-    } else {      
-      save(contact);
-    }
-  }}>Save</button> : null;
+  const doCancel = isCreating ? cancelNew : () => edit(false);
+  const doSave = isCreating ? saveNew : save;
+  
+  const editButton = isEditing ? <button onClick={doCancel}>Cancel</button> : <button onClick={() => edit(id)}>Edit</button>;
+  const saveButton = isEditing ? <button onClick={() => doSave(contact)}>Save</button> : null;
   const deleteButton = isEditing ? null : <button onClick={() => remove(id)}>Remove</button>;
+
   return (
     <div className="detail-controls">
       {saveButton}

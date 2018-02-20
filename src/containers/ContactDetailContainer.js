@@ -3,6 +3,7 @@ import ContactDetail from '../components/ContactDetail';
 import { blankContact } from '../schema';
 
 import {
+  actionSelectContact,
   actionRemoveContact,
   actionSetEditing,
   actionSetCreating,
@@ -43,10 +44,10 @@ const mapDispatchToProps = (dispatch) => ({
     // it's nice to be able to edit again if you cancel by accident
     // and all the previous input still be there.
   },
-  cancelNew: () => {
+  cancelNew: () => {    
     dispatch(actionSetEditing(false));
     dispatch(actionSetCreating(false));    
-    dispatch(actionResetChanges());            
+    dispatch(actionResetChanges());
   },
   changeHandler: (data) => {
     dispatch(actionStageChanges(data));
@@ -63,7 +64,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(actionAddContact(data));
     dispatch(actionSetEditing(false));
     dispatch(actionSetCreating(false));        
-    dispatch(actionResetChanges());        
+    dispatch(actionResetChanges());
   }
 });
 
